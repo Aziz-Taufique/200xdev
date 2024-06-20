@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+  //  debouncing and thrilling
+
+  let timeout
+  function debouncingCalculateValue(){
+    // delay the call to calculateValue until i have not been called for 100ms
+    // ans i have been called once
+    ///////////////
+    // How do you cancel a clock
+    // cleartimeout
+    clearTimeout(timeout)
+     timeout = setTimeout(() => {
+      calculateValue()
+    }, 1000)
+    
+  }
+   async function calculateValue(){
+       const a = document.getElementById("firstNumber").value
+       const b = document.getElementById("secondNumber").value
+      // const element = document.getElementById("hehe").innerHTML = parseInt(a) + parseInt(b)
+    const response = await fetch("http://localhost:4000/sum?a=" + a + "&b=" + b)
+      const ans = await response.text()
+     document.getElementById("hehe").innerHTML = ans
+      
+    }
+
+    function calculateSub(){
+       const a = document.getElementById("firstNumber").value
+       const b = document.getElementById("secondNumber").value
+      const element = document.getElementById("hehe").innerHTML = parseInt(a) - parseInt(b)
+      
+    }
+
+    function calculateProduct(){
+       const a = document.getElementById("firstNumber").value
+       const b = document.getElementById("secondNumber").value
+      const element = document.getElementById("hehe").innerHTML = parseInt(a) * parseInt(b)
+      
+    }
+</script>
+<body>
+    <input oninput="debouncingCalculateValue()" id="firstNumber" type="text" placeholder="first number"><br>
+    <br>
+    <input oninput="debouncingCalculateValue()" id="secondNumber" type="text" placeholder="second number"><br>
+    <br>
+    <!-- <button onclick="calculateValue()">Calculate sum</button> -->
+    
+    <button onclick="calculateSub()">calculate sub</button>
+    
+    <button onclick="calculateProduct()">calculate product</button>
+    <br>
+    <div id="hehe"></div>
+</body>
+</html>
