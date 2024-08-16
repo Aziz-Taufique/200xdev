@@ -1,6 +1,8 @@
-console.log("fooo");
-console.log("fooo-hee");
-
-function sum(a, b) {
-  return a + b;
-}
+const name = ["aziz", "ali", "boo", "baby", "aaoo"].filter((e) => {
+  if (e.startsWith("b")) {
+    return true;
+  } else {
+    return false;
+  }
+});
+console.log(name);

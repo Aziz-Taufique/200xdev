@@ -7,7 +7,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 // console.log(newArr);
 
-//// map  => global fn
+//////////////////////////////////// map  => global fn
 
 const ans = arr.map((e) => {
   return e * 3;
